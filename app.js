@@ -1,8 +1,16 @@
 const express = require('express');
 const app = express();
 const routes = require('./routes');
+const cors = require('cors');
 
 app.use(express.json());
+
+app.use(cors({
+  origin: '*',
+  methods: 'GET,PUT,POST,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type,Authorization',
+  credentials: true,
+}));
 
 app.use('/', routes);
 
